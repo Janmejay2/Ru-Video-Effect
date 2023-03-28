@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .navbar-nav a {
+            transition: all ease 0.5s;
+        }
+
+        .navbar-nav .nav-item {
+            padding-left: 4.5rem;
+        }
+
+        /* ===== == = === 48em (768px) === = == ===== */
+        @media only screen and (min-width : 48em) {
+
+            .navbar-nav a:hover,
+            .navbar-nav a:focus,
+            .navbar-nav a:active {
+                transform: translateY(.6rem) scaleY(1);
+                font-size: medium;
+                color: rgba(35, 85, 18, 1.982);
+                background-color: rgba(35, 85, 18, 1.982);
+            }
+
+            .navbar-nav .nav-item li {
+                padding-left: 0px;
+            }
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            min-height: 92vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background: rgb(21, 63, 7);
+        }
+
+        .home:before {
+            z-index: 777;
+            content: '';
+            position: absolute;
+            /* background: rgba(3, 96, 251, 0.3); */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .home .content {
+            z-index: 888;
+            color: #fff;
+            width: 70%;
+            margin-top: 50px;
+            margin-left: 20px;
+            display: none;
+        }
+
+        .home .content.active {
+            display: block;
+        }
+
+        .home .content h1 {
+            font-size: 3.4em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 75px;
+            margin-bottom: 40px;
+            text-shadow: 5px 5px 5px #555;
+        }
+
+        .home .content h1 span {
+            font-size: 1em;
+            font-weight: 600;
+            text-shadow: 5px 5px 5px #555;
+        }
+
+        .home .content p {
+            margin-bottom: auto;
+            font-size: medium;
+            font-style: italic;
+            font-weight: 600;
+            text-align: justify;
+        }
+
+        .home .content a {
+            background: #fff;
+            padding: 15px 35px;
+            color: #1680AC;
+            font-size: 1.1em;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        .home video {
+            z-index: 000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-navigation {
+            z-index: 888;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(80px);
+            margin-bottom: 12px;
+        }
+
+        .slider-navigation .nav-btr {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+            transition: 0.3s ease;
+        }
+
+        .slider-navigation .nav-btr.active {
+            background: rgba(25, 55, 5, 0.982), ;
+        }
+
+        .slider-navigation .nav-btr:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        .slider-navigation .nav-btr:hover {
+            transform: scale(1.2);
+        }
+
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            clip-path: circle(0% at 0 50%);
+        }
+
+        .video-slide.active {
+            clip-path: circle(150% at 0 50%);
+            transition: 2s ease;
+            transition-property: clip-path;
+        }
+
+        @media (max-width: 1040px) {
+
+
+            .home {
+                padding: 00px 0px;
+            }
+
+            .home .media-icons {
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .home .content h1 {
+                font-size: 3em;
+                line-height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="background-image:linear-gradient(to left,rgba(25, 55, 5, 0.982), rgba(25, 55, 5, 1.982))">
+        <div class="container-fluid">
+            <img style="height: auto;width: 4%;" src="My project.png" alt="....">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content: center;">
+                <ul class="navbar-nav ">
+                    <li class="nav-item flex-fill">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item flex-fill">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link" href="#">RU
+                            Community</a>
+                    </li>
+                    <li class="nav-item flex-fill">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link" href="#">Forums</a>
+                    </li>
+                    <li class="nav-item flex-fill dropdown">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link dropdown-toggle"
+                            href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li class="nav-item flex-fill"><a style="font-size: 1rem; font-weight: 700; color:black;"
+                                    class="dropdown-item" href="#">History</a></li>
+                            <li class="nav-item flex-fill"><a style="font-size: 1rem; font-weight: 700; color:black;"
+                                    class="dropdown-item" href="#">Vision & Mission</a></li>
+                            <li class="nav-item flex-fill"><a style="font-size: 1rem; font-weight: 700; color:black;"
+                                    class="dropdown-item" href="#">Faculty</a></li>
+                            <li class="nav-item flex-fill"><a style="font-size: 1rem; font-weight: 700; color:black;"
+                                    class="dropdown-item" href="#">ACT</a></li>
+                            <li class="nav-item flex-fill"><a style="font-size: 1rem; font-weight: 700; color:black;"
+                                    class="dropdown-item" href="#">Statute</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item flex-fill">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link" href="#">Campus
+                            Life</a>
+                    </li>
+                    <li class="nav-item flex-fill">
+                        <a style="font-size: 1rem; font-weight: 700; color:white;" class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- video Slider -->
+    <div class="container-expand-lg">
+        <section class="home">
+            <video class="video-slide active" src="Front Original Test 05.mp4" autoplay muted loop></video>
+            <video class="video-slide" src="Front Original Test 05.mp4" autoplay muted loop></video>
+            <video class="video-slide" src="Front Original Test 05.mp4" autoplay muted loop></video>
+            <video class="video-slide" src="Front Original Test 05.mp4" autoplay muted loop></video>
+            <video class="video-slide" src="Front Original Test 05.mp4" autoplay muted loop></video>
+            <div class="content active">
+                <h1>Ravenshaw<br><span>University</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="content">
+                <h1>Ravenshaw<br><span>University</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="content">
+                <h1>Ravenshaw<br><span>University</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="content">
+                <h1>Ravenshaw<br><span>University</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="content">
+                <h1>Ravenshaw<br><span>University</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div class="slider-navigation">
+                <div class="nav-btr active"></div>
+                <div class="nav-btr"></div>
+                <div class="nav-btr"></div>
+                <div class="nav-btr"></div>
+                <div class="nav-btr"></div>
+            </div>
+        </section>
+    </div>
+
+    <script type="text/javascript">
+
+
+        //Javacript for video slider navigation
+        const btns = document.querySelectorAll(".nav-btr");
+        const slides = document.querySelectorAll(".video-slide");
+        const contents = document.querySelectorAll(".content");
+
+        var sliderNav = function (manual) {
+            btns.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active");
+            });
+
+            contents.forEach((content) => {
+                content.classList.remove("active");
+            });
+
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+            contents[manual].classList.add("active");
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
